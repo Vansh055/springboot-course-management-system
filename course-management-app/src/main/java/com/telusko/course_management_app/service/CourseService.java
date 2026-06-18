@@ -9,23 +9,32 @@ import com.telusko.course_management_app.entity.Course;
 import com.telusko.course_management_app.repository.CourseRepository;
 
 @Service
-public class CourseService implements ICourseService {
-
+public class CourseService implements ICourseService
+{
     @Autowired
     private CourseRepository repo;
 
     @Override
-    public void registerCourse(Course course) {
+    public void registerCourse(Course course)
+    {
         repo.save(course);
     }
 
     @Override
-    public List<Course> getAllCourses() {
+    public List<Course> getAllCourses()
+    {
         return (List<Course>) repo.findAll();
     }
 
     @Override
-    public void deleteCourse(Integer id) {
+    public void deleteCourse(Integer id)
+    {
         repo.deleteById(id);
+    }
+
+    @Override
+    public Course getCourseById(Integer id)
+    {
+        return repo.findById(id).orElse(null);
     }
 }
