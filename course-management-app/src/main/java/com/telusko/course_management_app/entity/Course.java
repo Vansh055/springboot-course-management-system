@@ -1,30 +1,40 @@
 package com.telusko.course_management_app.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
 public class Course {
-    @Id
-    private Integer courseId;
-    private String courseName;
-    private Double courseFees;
 
-    public Course(Integer courseId, String courseName, Double courseFees) {
-        this.courseId = courseId;
-        this.courseName = courseName;
-        this.courseFees = courseFees;
-    }
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer id;
+
+    private String courseName;
+
+    private String trainerName;
+
+    private Integer duration;
+
+    private Double fees;
 
     public Course() {
     }
 
-    public Integer getCourseId() {
-        return courseId;
+    public Course(Integer id, String courseName, String trainerName,
+                  Integer duration, Double fees) {
+        this.id = id;
+        this.courseName = courseName;
+        this.trainerName = trainerName;
+        this.duration = duration;
+        this.fees = fees;
     }
 
-    public void setCourseId(Integer courseId) {
-        this.courseId = courseId;
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getCourseName() {
@@ -35,20 +45,27 @@ public class Course {
         this.courseName = courseName;
     }
 
-    public Double getCourseFees() {
-        return courseFees;
+    public String getTrainerName() {
+        return trainerName;
     }
 
-    public void setCourseFees(Double courseFees) {
-        this.courseFees = courseFees;
+    public void setTrainerName(String trainerName) {
+        this.trainerName = trainerName;
     }
 
-    @Override
-    public String toString() {
-        return "Course{" +
-                "courseId=" + courseId +
-                ", courseName='" + courseName + '\'' +
-                ", courseFees=" + courseFees +
-                '}';
+    public Integer getDuration() {
+        return duration;
+    }
+
+    public void setDuration(Integer duration) {
+        this.duration = duration;
+    }
+
+    public Double getFees() {
+        return fees;
+    }
+
+    public void setFees(Double fees) {
+        this.fees = fees;
     }
 }
